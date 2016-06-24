@@ -1,9 +1,27 @@
+// Copyright 2016 Google Inc. All rights reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+// This code(in function Vulkan::load_functions and after line 326) is used part of original code
+
 #include "functions.h"
 #include <dlfcn.h>
 
 namespace Vulkan {
     bool load_functions() {
         void *libvulkan = dlopen("libvulkan.so", RTLD_NOW | RTLD_LOCAL);
+	    // if (!libvulkan)
+		//    return 0;
         if (libvulkan == nullptr) return false;
 
         // Vulkan supported, set function addresses
